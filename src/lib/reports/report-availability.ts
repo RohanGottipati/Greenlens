@@ -73,19 +73,6 @@ export function getSectionAvailability(report: ReportLike | null | undefined) {
   }, {} as Record<ReportSection, SectionAvailability>)
 }
 
-export function isReportSectionAvailable(
-  report: ReportLike | null | undefined,
-  section: ReportSection
-) {
-  return getSectionAvailability(report)[section].status === 'available'
-}
-
-export function getUnavailableReportSections(report: ReportLike | null | undefined) {
-  const sectionAvailability = getSectionAvailability(report)
-
-  return REPORT_SECTIONS.filter((section) => sectionAvailability[section].status === 'unavailable')
-}
-
 export function getReportProviderStatuses(report: ReportLike | null | undefined) {
   return report?.executive_summary?.provider_statuses ?? []
 }

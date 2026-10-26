@@ -753,10 +753,6 @@ export async function advanceAnalysisJob(jobId: string, companyId: string) {
   }
 }
 
-export async function runPipeline(jobId: string, companyId: string) {
-  return advanceAnalysisJob(jobId, companyId)
-}
-
 function buildLicenseRightsizingDecision(license: LicenseIntelligenceResult) {
   const potentialAnnualSavings = license.potentialAnnualSavings ?? 0
 
