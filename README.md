@@ -29,7 +29,7 @@ src/
     (dashboard)/       dashboard pages and layout
     onboarding/        company details, integrations, confirm
     api/               integrations OAuth/key connect, pipeline trigger/status, reports, export, account
-    testing/           Backboard debug page (dev / ENABLE_BACKBOARD_TEST_ROUTE)
+    testing/           Backboard debug page (its /api/testing/backboard route needs dev or ENABLE_BACKBOARD_TEST_ROUTE)
   components/          dashboard, landing and onboarding UI
   lib/
     agents/            pipeline agents + orchestrator
@@ -50,7 +50,7 @@ Implementation_Plan.md   original hackathon implementation plan and product fram
 
 ## Prerequisites
 
-- Node.js 20+ and npm
+- Node.js 20.9+ and npm (required by Next.js 16)
 - A Supabase project
 - API credentials for the providers you want to use (Backboard, Gemini, Microsoft Entra app, Google Cloud OAuth client)
 
@@ -93,7 +93,7 @@ See `.env.example`.
 | `MICROSOFT_CLIENT_ID` / `MICROSOFT_CLIENT_SECRET` / `MICROSOFT_TENANT_ID` | Microsoft Graph OAuth app (tenant defaults to `common`) |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google Workspace OAuth client |
 | `NEXT_PUBLIC_SITE_URL` | Public base URL used to build OAuth redirect URIs |
-| `ENABLE_GOOGLE_USAGE_SPIKE` | `true` enables exploratory Google Gemini activity collection and `/api/reports/[id]/google-usage-spike` outside development |
+| `ENABLE_GOOGLE_USAGE_SPIKE` | `true` enables exploratory Google Gemini activity collection during analysis (off unless set, even in development) and exposes `/api/reports/[id]/google-usage-spike` outside development |
 | `ENABLE_BACKBOARD_TEST_ROUTE` | `true` enables `/api/testing/backboard` outside development |
 
 GitHub/Google/Microsoft *login* providers are configured in the Supabase dashboard, not via app env vars.
