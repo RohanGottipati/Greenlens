@@ -20,20 +20,6 @@ interface MicrosoftSku {
   consumedUnits?: number
 }
 
-export async function getMicrosoftAccessToken(tenantId: string, clientId: string, clientSecret: string) {
-  const response = await axios.post(
-    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
-    new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: clientId,
-      client_secret: clientSecret,
-      scope: 'https://graph.microsoft.com/.default'
-    }),
-    { timeout: MICROSOFT_API_TIMEOUT_MS }
-  )
-  return response.data.access_token
-}
-
 export async function refreshMicrosoftAccessToken(refreshToken: string) {
   const tenantId = process.env.MICROSOFT_TENANT_ID ?? 'common'
   const response = await axios.post(
